@@ -1,0 +1,79 @@
+{% extends "base.html" %} 
+{% load static %} 
+
+{% block meta-description %}All of the companies I worrked for all around the world. I've worked abroad, worked with teams from different countries. You can find my Letter of Recommendations here. I've gained much experience and grew my insights thoroughly.{% endblock %}
+{% block title %}Companies{% endblock %}
+
+
+ {% block content %}
+
+ <div class="div eng-work-list-page-div  d-flex align-items-center">
+    <div class="container h-100">
+        <div class="row ">
+            <div class="col-md-5">
+                <h1 class="webapp-top-title">{{ global.engineering_title }}</h1>
+                <h2 class="webapp-top-description"> {{ global.engineering_text|linebreaksbr }}</h2>
+            </div>
+        </div>
+    </div>
+    <div class="section-down">
+        <div class="container-fluid section-down-container justify-content-center">
+            <span class="section-down-title pr-2" style="float: left;">Companies</span>
+            <img height="13px" src="{% static 'images/down_chevron.svg' %}" alt="scroll_down_gif">
+        </div>
+        
+    </div>
+ </div>
+
+ <div class="container-fluid mt-5 pt-3">    
+    {% for object in object_list %}    
+    <div class="row mb-4">
+        <div class="col d-flex justify-content-center">
+            <div class="row w-100  eng-row">
+                <div class="col-xl-8  pt-4 pl-4">
+                    <div class="row mb-2">
+                        <div class="col-7">
+                            <h2 class="eng-company-h2">{{ object.company }}</h2>
+                            <p class="eng-company-title">{{ object.title }}</p>
+                        </div>
+                        <div class="col-5 eng-col">
+                            <h2 class="eng-company-country">{{ object.country }}</h2>
+                            <p class="eng-duration">{{ object.duration }}</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col" >
+                            <div class="eng-seperating-div mb-4" style="background-color: {{ object.color }};"></div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <p class="eng-company-description">{{ object.description|linebreaksbr  }}</p>
+                        </div> 
+                    </div>
+                    <div class="row mt-3 mb-4">
+                        {% if object.letter %}
+                        <div class="col-md-6">
+                            <a href='{{ object.letter.url }}' target="_blank" class="eng-company-button" style="background-color: {{ object.color }};"> <span class="eng-company-span">{{ object.company }}</span>  Letter Of Recommendation</a>
+                        </div>
+                        <div class="col-md-6 eng-col-website">
+                            <a href="http://{{ object.website }}" target="_blank" class="eng-company-website">{{ object.website }}</a>
+                        </div>
+                        {% else %}
+                        <div class="col eng-col-website">
+                            <a href="http://{{ object.website }}" target="_blank" class="eng-company-website">{{ object.website }}</a>
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="col-xl-4 text-center">
+                    <img class="eng-company-map" src="{{ object.image.url }}" alt="">
+                </div>
+            </div>
+        </div>        
+    </div>
+    {% endfor %}
+</div>
+
+{% endblock content %}
+

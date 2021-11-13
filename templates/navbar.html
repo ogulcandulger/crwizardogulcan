@@ -1,0 +1,52 @@
+{% load static %}
+
+<div class="container-fluid px-0" style="background-color: red;">
+	<nav class="navbar navbar-expand-lg navbar-light fixed-top bg-light position-relative" style="{% if request.path != "/"  %}background-color: white !important{% endif %}">
+		<a class="navbar-brand d-lg-none pl-2" href="/">
+			<img src="{% static 'images/logo.svg' %}"   style="width: 60vw;max-width: 230px;" alt="logo">
+		</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" id="navbar-toggler-to-be-collapsed">
+			<span class="navbar-toggler-icon"></span>    
+			<img class="close-icon" src="{% static 'images/close.svg' %}"  height="22" alt="logo">
+		</button>
+		<div class="collapse navbar-collapse bg-light justify-content-center pt-2" id="navbarCollapse" style="{% if request.path != "/"  %}background-color: white !important{% endif %}">
+			<ul class="navbar-nav mr-auto">
+				<li class="nav-item">
+					<a class="nav-link" href="/about">About </a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link nav-link-work" href="/#work" onclick="myFunction()">Work</a>
+				</li>
+			</ul>
+
+			<a class="navbar-brand d-none d-lg-block navbar-brand-large mx-0" href="/">
+				<img src="{% static 'images/logo.svg' %}" class="brand-image" width="auto" height="14" alt="logo">
+			</a>
+
+			<ul class="navbar-nav ml-auto">
+				<li class="nav-item nav-item-right">
+					<a class="nav-link" href="/contact">Contact</a>
+				</li>
+				<li class="nav-item nav-item-right">
+					<a class="nav-link" target="_blank" href="/static/Resume_OgulcanDulger.pdf">Resume</a>
+				</li>
+			</ul>
+		</div>
+	</nav>
+</div>
+
+{% block extra_scripts %}
+
+<script>
+
+	function myFunction() {
+	  var element = document.getElementById("navbar-toggler-to-be-collapsed");
+	  element.classList.add("collapsed");
+	  element.setAttribute("aria-expanded", "false")
+	  var element2 = document.getElementById("navbarCollapse");
+	  element2.classList.remove("show");
+	}
+</script>
+
+
+{% endblock extra_scripts %}

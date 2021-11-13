@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+{% load static %}
+
+<html lang="en">
+<head>
+    <title>{% block title %}{% endblock %} | Ogulcan Dulger - Web Designer & Developer</title>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id={{ global.google_analytics_id }}"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', '{{ global.google_analytics_id }}');
+    </script>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Red+Hat+Text:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.0/css/all.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+    <link rel='icon' type='image/x-icon' href="{% static 'favicon.ico' %}" />    
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">  
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.js"></script>
+
+    {% block extra_top_scripts %}
+    {% endblock extra_top_scripts %}    
+
+	<!-- Styling for public area -->
+    <meta charset="UTF-8">
+    <meta name="author" content="Ogulcan Dulger">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <meta name="keywords" content="react, frontenddeveloper, django, python, backend, redux, remote, developer, dreamer, freelance, freelancer, responsive, rwd, web, website, ui, ux, user, interface, experience, graphic, creative, designer, director, direction, product, mobile, application, app, animation, interaction, photography, art, hire, agency, studio, consultancy, portfolio, case, study, studies, projects">
+    <meta name="description" content="{% block meta-description %}{% endblock %}">
+    <meta name="robots" content="noodp,noydir" />
+    <link rel="apple-touch-icon" sizes="57x57" href="{% static 'apple-icon-57x57.png' %}">
+    <link rel="apple-touch-icon" sizes="60x60" href="{% static 'apple-icon-60x60.png' %}">
+    <link rel="apple-touch-icon" sizes="72x72" href="{% static 'apple-icon-72x72.png' %}">
+    <link rel="apple-touch-icon" sizes="76x76" href="{% static 'apple-icon-76x76.png' %}">
+    <link rel="apple-touch-icon" sizes="114x114" href="{% static 'apple-icon-114x114.png' %}">
+    <link rel="apple-touch-icon" sizes="120x120" href="{% static 'apple-icon-120x120.png' %}">
+    <link rel="apple-touch-icon" sizes="144x144" href="{% static 'apple-icon-144x144.png' %}">
+    <link rel="apple-touch-icon" sizes="152x152" href="{% static 'apple-icon-152x152.png' %}">
+    <link rel="apple-touch-icon" sizes="180x180" href="{% static 'apple-icon-180x180.png' %}">
+    <link rel="icon" type="image/png" sizes="192x192"  href="{% static 'android-icon-192x192.png' %}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'favicon-32x32.png' %}">
+    <link rel="icon" type="image/png" sizes="96x96" href="{% static 'favicon-96x96.png' %}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'favicon-16x16.png' %}">
+    <link rel="manifest" href="{% static 'manifest.json' %}">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="{% static 'ms-icon-144x144.png' %}">
+    <meta name="theme-color" content="#ffffff">
+    
+    <meta property="og:title" content="Welcome to Ogulcan Dulger" />
+    <meta property="og:url" content="{{ request.build_absolute_uri }}" />
+    <meta property="og:description" content="Portfolio of Ogulcan Dulger">
+    <meta property="og:image" content="https://ogulcandulger.com/static/images/logo256.png">
+    <meta property="og:type" content="article" />
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Ogulcan Dulger Design",
+      "url": "https://ogulcandulger.com/",
+      "logo": "https://ogulcandulger.com/static/images/logo256.png"
+    }
+    </script>
+</head>
+<body style="background-color: #ffffff;">
+    <div class="mt-2" style="position: absolute;z-index: 99;right: 1rem;top: 5rem;margin-left: 1rem;">
+        {% if messages %}
+        {% for message in messages %}
+        <div class="alert alert-{{ message.tags }} alert-dismissible fade show alert-div" role="alert">
+          {{ message }}
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close" style="outline: none;">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        {% endfor %}
+        {% endif %}
+    </div>
+    <button class="scroll-top" data-scroll="up"  title="Go to top"><i class="fas fa-chevron-up"></i></button>
+    
+    <div class="navbar-background-div" style="{% if request.path != "/"  %}background-color: white !important{% endif %}"></div>
+
+
+
+    {% include "navbar.html" %}
+
+
+
+    {% block content %}
+    {% endblock content%}
+
+    <div class="navbar-menu-open-div"></div>
+
+    {% include "footer.html" %}      
+
+</body>
+
+<script   src="https://code.jquery.com/jquery-3.5.1.js"  integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="  crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+{% block extra_scripts %}
+{% endblock extra_scripts %}
+<script>
+var toggle = document.querySelector('.navbar-toggler')
+
+var toggleObserver = new MutationObserver(function(mutations) {
+  mutations.forEach(function(mutation) {
+    if (mutation.type == "attributes") {
+      // here you can play with it now :)
+      if (mutation.target.getAttribute('aria-expanded') == "true") {
+        window.scrollTo(0,0);
+        $('body').css('overflow', 'hidden');
+        $('.navbar-menu-open-div').css('display', 'block');
+      } else {
+        $('body').css('overflow', 'auto');
+        $('.navbar-menu-open-div').css('display', 'none');
+      }      
+    }
+  });
+});
+
+toggleObserver.observe(toggle, {
+  attributes: true, //configure it to listen to attribute changes
+  attributeFilter: ['aria-expanded'] // filter your attributes
+});
+</script>
+<script src="{% static 'js/scrolltop.js' %}"></script>
+<script src="{% static 'js/message-fadeout.js' %}"></script>
+</html>

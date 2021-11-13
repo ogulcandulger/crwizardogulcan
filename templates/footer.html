@@ -1,0 +1,44 @@
+{% load static %}
+
+<footer>
+    {% if request.path != "/contact/"  %}
+    <div class="container d-flex justify-content-center align-items-center" style="height: 50vh;">
+        <div class="row">
+            <div class="col ">
+                <div class="text-center">
+                    <h3 class="homapage-contact-text">Would like to know more about me?</h3>
+                    <a style="text-decoration: none !important;" href="/contact"><h2 class="homapage-contact-title">Contact</h2></a>
+                </div>            
+            </div>
+        </div>
+    </div>
+    {% endif %}
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col"></div>
+            <div class="col-12 col-md-5 col-lg-4 px-5 pt-5 pb-2" style="background-color: #292929;">
+                <img class="mb-5 mx-auto" src="{% static 'images/logo_white.svg' %}" height="auto" width="65%" alt="">
+                <h2 class="say-hi">Say hi @</h2>
+                <a href="mailto:hello@ogulcandulger.com" class="footer-mail">hello@ogulcandulger.com</a> <br>
+                <a href="tel:+905066857858" class="footer-mail">+90 506 685 7858</a>
+                <div class="my-4">
+                    <a href="https://github.com/ogulcandulger" target="_blank" class="footer-social">Github</a> <br>
+                    <a href="https://www.linkedin.com/in/ogulcandulger/" target="_blank" class="footer-social">Linkedin</a><br>
+                    <a href="https://www.instagram.com/ogulcan.dulger/" target="_blank" class="footer-social">Instagram</a>
+                </div>
+                
+                <div >
+                    <div class="text-center">
+                        <a href="/about" class="footer-link">About &nbsp;</a><span class="straight-line-footer"> | </span>
+                        <a href="/#work" class="footer-link">&nbsp;Work &nbsp;</a><span class="straight-line-footer"> | </span>
+                        <a href="/contact" class="footer-link">&nbsp;Contact &nbsp;</a><span class="straight-line-footer"> | </span>
+                        <a href="/static/Resume_OgulcanDulger.pdf" target="_blank" class="footer-link">&nbsp;Resume</a> <br>
+                        <span class="footer-li">© {% now "Y" %} Ogulcan Dulger </span>                     
+
+                    </div>
+                </div>
+            </div>
+            <div class="col"></div>
+        </div>   
+    </div>
+</footer>

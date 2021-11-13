@@ -1,0 +1,49 @@
+{% extends "base.html" %} 
+{% load static %} 
+
+{% block meta-description %}Webapps of Ogulcan Dulger. For the last 3 years I built several webapps, some for my clients and some for myself. I can build static websites and I can build complex, dynamic websites using React, Django. You can check all the webapps here.{% endblock %}
+{% block title %}Webapps{% endblock %}
+
+
+ {% block content %}
+
+ <div class="div work-list-page-div  d-flex align-items-center">
+    <div class="container h-100">
+        <div class="row ">
+            <div class="col-md-5">
+                <h1 class="webapp-top-title">{{ global.webapps_title }}</h1>
+                <h2 class="webapp-top-description" >
+                    {{ global.webapps_text }}
+                </h2>
+            </div>
+        </div>
+    </div>
+    <div class="section-down">
+        <div class="container-fluid section-down-container justify-content-center">
+            <span class="section-down-title pr-2" style="float: left;">Webapps</span>
+            <img height="13px" src="{% static 'images/down_chevron.svg' %}" alt="scroll_down_gif">
+        </div>
+        
+    </div>
+ </div>
+ 
+ 
+ <div class="container-fluid mt-5 pt-3 mb-4">
+    
+    <div class="row">
+        {% for object in object_list %}
+        <div class="col-xl-4 col-lg-6 col-md-6 mb-4 mt-2">
+            <a href="{{ object.get_absolute_url }}" class="webapp-col" style="position: relative;">
+                <img class="webapp-img" style="width: 100%;height: auto;filter: brightness(50%);" src="{{ object.image.url }}" alt="">
+                <h2 class="webapp-title" >{{ object.title }}</h2>
+                <p class="webapp-description">{{ object.description|linebreaksbr }}</p>
+                <div class="webapp-rectangle"></div>
+                <p class="webapp-content">{{ object.content|linebreaksbr }}</p>
+            </a>   
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock content %}
+

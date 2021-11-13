@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block meta-description %}About Ogulcan Dulger. I'm Ogulcan Dulger, a lifelong learner. I've graduated as a mechanical engineer but I do web development, web design and many personal side projects. You can find who I am, what I did and what I want to do{% endblock %}
+
+{% block title %}About{% endblock %}
+
+{% block content %}
+
+
+
+
+<div class="container mt-5">
+  <div class="row d-flex justify-content-center">
+      <div class="col-12 col-md-7 text-center" >
+          <h1 class="mb-5">{{ global.about_title }}</h1>
+          <p>{{ global.about_text1|linebreaksbr }}</p>
+      </div>
+  </div>
+</div>
+{% endblock content %}

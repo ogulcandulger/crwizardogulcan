@@ -1,0 +1,34 @@
+{% extends "base.html" %} 
+{% load static %} 
+
+{% block meta-description %}{{object.title}} | {{object.meta_description}}{% endblock %}
+{% block title %}{{object.title}}{% endblock %}
+
+
+ {% block content %}
+
+ <div class="container mt-4 ">
+   <div class="row">
+     <div class="col">
+      <h1 class="webapp-single-title">{{ object.title }}</h1>
+     </div>
+   </div>
+  <div class="row">
+      <div class="col-md-6 pt-2">
+          <p class="webapp-single-text">{{ object.long_description_slug|linebreaksbr }}</p>
+          <h2 class="webapp-single-h2">Technologies</h2>
+          <p class="webapp-single-text mb-4">{{ object.technology|linebreaksbr }}</p>
+          <p class="webapp-single-text mb-0" style="line-height: 1rem;"> <strong>Visit</strong> </p>
+          <a class="webapp-single-text" href="https://{{object.url}}" target="_blank">{{ object.url }}</a>          
+      </div>
+      <div class="col-md-6 pt-md-0 pt-4">
+        <div class="text-center">
+          <img class="hp-2-col-img" src="{{ object.image_mac.url }}" alt="laptop">
+          <img class="hp-2-col-img" src="{{ object.image_ipad.url }}" alt="ipad">
+        </div>          
+      </div>
+  </div>
+</div>
+
+{% endblock content %}
+
