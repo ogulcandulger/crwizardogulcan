@@ -24,13 +24,25 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.sites',
+    
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.google',
 
     'webapp',
+
+    'crispy_forms',
 ]
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 AUTH_USER_MODEL = 'webapp.MyUser'
 
 SITE_ID = 1
+
+LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = '/'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -42,6 +54,18 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+SOCIALACCOUNT_PROVIDERS = {
+    'google': {
+        'SCOPE': [
+            'profile',
+            'email',
+        ],
+        'AUTH_PARAMS': {
+            'access_type': 'online',
+        }
+    }
+}
 
 ROOT_URLCONF = 'website.urls'
 
@@ -64,7 +88,7 @@ TEMPLATES = [
 AUTHENTICATION_BACKENDS = [
     # Needed to login by username in Django admin, regardless of `allauth`
     'django.contrib.auth.backends.ModelBackend',
-
+    'allauth.account.auth_backends.AuthenticationBackend'
 ]
 
 WSGI_APPLICATION = 'website.wsgi.application'
@@ -87,8 +111,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
-LOGIN_REDIRECT_URL = '/'
 
 LOCALE_PATHS = [os.path.join(BASE_DIR, 'locale')]
 
@@ -125,6 +147,13 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 FILE_UPLOAD_PERMISSONS=0o640
 
+ACCOUNT_AUTHENTICATION_METHOD = "email"
+ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_UNIQUE_EMAIL = True
+ACCOUNT_USERNAME_REQUIRED = False
+SOCIALACCOUNT_QUERY_EMAIL = True
+ACCOUNT_LOGOUT_ON_GET= True
+
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
@@ -132,3 +161,5 @@ EMAIL_HOST_USER = 'crwizardogulcan@gmail.com'
 
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
+
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'

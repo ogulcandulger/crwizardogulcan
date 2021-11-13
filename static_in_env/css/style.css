@@ -113,75 +113,8 @@ p, span {
 
     
     .navbar{
-        height: var(--navbar-height);
+        /* height: var(--navbar-height); */
         background-color: #EFEFEF !important;
-    }
-
-    .navbar-brand-large{
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-    }
-
-    .navbar-toggler {
-        background-color: rgba(255, 255, 255, 0);
-        border-color: #efefef00!important;
-    }
-
-    .navbar-toggler-icon {
-        background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(65,65,65)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10'  d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E") !important;
-    }
-
-    .navbar-toggler[aria-expanded="true"] > body {
-        background-color: black;
-    }
-
-    .navbar-toggler[aria-expanded="true"] > .close-icon {
-        display: inline;
-        color: #EFEFEF;
-        color: #414141;
-        opacity: 1;
-    }
-    
-    .navbar-toggler[aria-expanded="true"] > span.navbar-toggler-icon {
-        display: none;
-    }
-    
-    .navbar-toggler[aria-expanded="false"] > .close-icon {
-        display: none;
-    }
-
-    .close-icon{
-        padding-right: 5px;
-    }
-
-    .navbar-collapse{
-        background-color: #EFEFEF !important;
-    }
-
-    .navbar-background-div{
-        height: var(--navbar-height);
-        background-color: #EFEFEF;
-        width: 100%;
-        position: absolute;
-        top: 0;
-    }
-    
-    .navbar-menu-open-div{
-        display: none;
-        height: 100vh;
-        width: 100%;
-        position: absolute;
-        top: 0;
-        background-color: rgba(0, 0, 0, 0.808);
-        transition: 0.4s;    
-    }    
-
-    .nav-item{
-        display: flex;
-        align-items: center;
-        justify-content: center;
     }
 
     .nav-link{
@@ -758,35 +691,6 @@ p, span {
 
     .nav-item{ 
         justify-content: flex-start;
-    }
-
-    .navbar-collapse {
-        position: fixed;
-        top: 75px;
-        right: 0;
-        padding-left: 15px;
-        padding-right: 15px;
-        padding-bottom: 15px;
-        width: 75%;
-        height: 100%;
-    }
-
-    .navbar-collapse.collapsing {
-        right: -85%;
-        transition: height 0s ease;
-    }
-
-    .navbar-collapse.show {
-        right: 0;
-        transition: right 300ms ease-in-out;
-    }
-
-    .navbar-toggler.collapsed ~ .navbar-collapse {
-        transition: right 500ms ease-in-out;
-    }
-
-    .navbar-toggler:focus{
-        outline: none !important;
     }
 }
 

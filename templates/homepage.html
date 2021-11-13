@@ -1,5 +1,7 @@
 {% extends 'base.html' %}
+{% load socialaccount %}
 {% load static %}
+{% load crispy_forms_tags %}
 
 {% block meta-description %}Welcome to Ogulcan Dulger Portolio Website. I dream, research, design and build. I build webapps, I design 3D parts, I organize events. I've worked for companies all around the world. You can find all the work I do here{% endblock %}
 
@@ -11,247 +13,24 @@
 
 <div class="homepage d-flex justify-content-center ">
     <div class="container homepage-top-title-container text-right">
-        <h1 class="hello-title">Hello</h1>
-        <h2 class="hello-text">I’m Oğulcan. <br>
-            An engineer who aspires to be an artist.</h2>
-        <img class="scroll-down-gif" height="35px" src="{% static 'images/scroll_down.gif' %}" alt="scroll_down_gif">
-        
+        <h1>CRWizard Case - Ogulcan</h1>
+        {% if user.is_authenticated %}
+        <p>Welcome, You are logged in as {{ user.email }}</p>
+        <form method="post" class="uniForm" enctype="multipart/form-data">{% csrf_token %}
+            {{ form|crispy }}
+            <button  type="submit">
+                Send
+            </button>
+        </form>
+        {% else %}
+        <a href="{% provider_login_url 'google' %}">Login With Google</a>
+        {% endif %}
 
-    </div>
-    <div class="section-down">
-        <div class="container-fluid section-down-container">
-            <span class="section-down-title pr-2" style="float: left;">My Journey</span>
-            <img height="13px" src="{% static 'images/down_chevron.svg' %}" alt="scroll_down_gif">
-        </div>
-        
     </div>
 </div>
-
-<div class="homepage-top-banner"></div>
-
-<div class="container-fluid  d-flex justify-content-center align-items-center my-5" style="min-height: 75vh;">
-    <div class="row">
-        <div class="col-md-4 col-12 text-center px-md-4 px-1 hp-text-section-col" style="border-right: 1px solid rgb(170, 170, 170);">
-            <h3 class="hp-h3 mt-5 mt-md-0">Artist?</h3>
-            <p class="hp-p mb-5 mb-md-1 ">
-                My journey started as a mechanical engineer. I liked my subject but I wanted to be more, wanted to do more.
-                I traveled, I witnessed,I imagined.
-                And I <strong>created</strong>. 
-                Just like an artist would do. 
-            </p>
-        </div>
-        <div class="col-md-4 col-12 text-center  px-md-4 px-1 hp-text-section-col" style="border-right: 1px solid rgb(170, 170, 170);">
-            <h3 class="hp-h3">Why not Web?</h3>
-            <p class="hp-p mb-5 mb-md-1">
-                I grew this passion of building web apps. I taught myself how to code,
-                how to design 
-                and how  to build.
-            </p>
-        </div>
-        <div class=" col-md-4 col-12 text-center  px-md-4 px-1">
-            <h3 class="hp-h3">Tools to Build</h3>                
-            <p class="hp-p mb-5 mb-md-0">
-                I learnt <strong> HTML, CSS, JS.</strong> 
-                Then backend, 
-                <strong>Django.</strong>  
-                And for reusability, 
-                <strong>React</strong>. 
-                They helped me actualize my thoughts. 
-                They were not the goal, they were my tools.   
-            </p>
-        </div>
-    </div>
-</div>
-
-
-<div class="container-fluid" id="work">
-    <div class="row mb-4">
-        <div class="col">
-            <h2 class="hp-3-h2" >Web Apps</h2>
-            <p class="hp-3-p">Web apps I did as a freelancer.</p>
-        </div>
-        <div class="col d-flex align-items-center justify-content-end">
-            <a  href="/webapps" class="hp-3-p view-all-webapp">View All</a>
-        </div>
-    </div>
-    
-    <div class="row">
-        {% for webapp in webapps %}
-        <div class="col-md-6 mb-5 mt-2 webapp-col-a">
-            <a href="{{ webapp.get_absolute_url }}" class="webapp-col mx-auto webapp-a">
-                <img class="webapp-img" style="width: 100%;height: auto;" src="{{ webapp.image.url }}" alt="">
-                <h2 class="webapp-title" >{{ webapp.title }}</h2>
-                <p class="webapp-description">{{ webapp.description|linebreaksbr }}</p>
-                <div class="webapp-rectangle"></div>
-                <p class="webapp-content">{{ webapp.content|linebreaksbr }}</p>
-                <p class="webapp-long-description">{{ webapp.long_description|linebreaksbr }}</p>
-            </a>   
-        </div>
-        {% endfor %}
-    </div>
-</div>
-
-<div style="background-color: #292929;width: 100%;">
-    <div class="container-fluid mt-5 pt-5" style="background-color: #292929;">
-        <div class="row my-4">
-            <div class="col">
-                <h2 class="hp-3-h2" style="color: white;">Visuals</h2>
-                <p class="hp-3-p" style="color: white;">Social media posts, posters, flyers and all the visuals I created.</p>
-            </div>
-        </div>        
-        <div class="row">
-            <div class="col-md-4 mb-1">
-                <div  class="webapp-col">
-                    <img class="mb-4 pb-2" style="width: 100%;height: auto;" src="{% static 'images/v1.jpg' %}" alt="">
-                    <img class="mb-4 pb-2" style="width: 100%;height: auto;" src="{% static 'images/v2.jpg' %}" alt="">
-                    <img class="mb-4 pb-2" style="width: 100%;height: auto;" src="{% static 'images/v3.jpg' %}" alt="">
-                </div>   
-            </div>
-            <div class="col-md-4 mb-1">
-                <div  class="webapp-col">
-                    <img class="mb-4 pb-2" style="width: 100%;height: auto;" src="{% static 'images/v4.jpg' %}" alt="">
-                    <img class="mb-4 pb-2" style="width: 100%;height: auto;" src="{% static 'images/v5.jpg' %}" alt="">
-                    <img class="mb-4 pb-2" style="width: 100%;height: auto;" src="{% static 'images/v6.jpg' %}" alt="">
-                </div>   
-            </div>
-            <div class="col-md-4 mb-1 ">
-                <div  class="webapp-col">
-                    <img class="mb-4 pb-2" style="width: 100%;height: auto;" src="{% static 'images/v7.jpg' %}" alt="">
-                    <img class="mb-4 pb-2" style="width: 100%;height: auto;" src="{% static 'images/v8.jpg' %}" alt="">
-                    <img class="mb-4 pb-2" style="width: 100%;height: auto;" src="{% static 'images/v9.jpg' %}" alt="">
-                </div>   
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-3 col-sm-6 mb-1">
-                <div  class="webapp-col">
-                    <img class="mb-4 pb-2" style="width: 100%;height: auto;" src="{% static 'images/v10.jpg' %}" alt="">
-                </div>   
-            </div>
-            <div class="col-md-3 col-sm-6 mb-1">
-                <div  class="webapp-col">
-                    <img class="mb-4 pb-2" style="width: 100%;height: auto;" src="{% static 'images/v11.jpg' %}" alt="">
-                </div>   
-            </div>
-            <div class="col-md-3 col-sm-6 mb-1">
-                <div  class="webapp-col">
-                    <img class="mb-4 pb-2" style="width: 100%;height: auto;" src="{% static 'images/v12.jpg' %}" alt="">
-                </div>   
-            </div>
-            <div class="col-md-3 col-sm-6 mb-1">
-                <div  class="webapp-col">
-                    <img class="mb-4 pb-2" style="width: 100%;height: auto;" src="{% static 'images/v13.jpg' %}" alt="">
-                </div>   
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="container-fluid mt-5 pt-3">
-    <div class="row mb-4">
-        <div class="col">
-            <h2 class="hp-3-h2" >Engineering Work</h2>
-            <p class="hp-3-p">The companies I worked for around the world.</p>
-        </div>
-        <div class="col d-flex align-items-center justify-content-end">
-            <a  href="/companies" class="hp-3-p view-all-webapp">View All</a>
-        </div>
-    </div>
-    {% for work in works %}    
-    <div class="row mb-4">
-        <div class="col d-flex justify-content-center">
-            <div class="row w-100  eng-row">
-                <div class="col-xl-8  pt-4 pl-4">
-                    <div class="row mb-2">
-                        <div class="col-7">
-                            <h2 class="eng-company-h2">{{ work.company }}</h2>
-                            <p class="eng-company-title">{{ work.title }}</p>
-                        </div>
-                        <div class="col-5 eng-col">
-                            <h2 class="eng-company-country">{{ work.country }}</h2>
-                            <p class="eng-duration">{{ work.duration }}</p>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col" >
-                            <div class="eng-seperating-div mb-4" style="background-color: {{ work.color }};"></div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col">
-                            <p class="eng-company-description">{{ work.description|linebreaksbr  }}</p>
-                        </div> 
-                    </div>
-                    <div class="row mt-3 mb-4">
-                        {% if work.letter %}
-                        <div class="col-md-6">
-                            <a href='{{ work.letter.url }}' target="_blank" class="eng-company-button" style="background-color: {{ work.color }};"> <span class="eng-company-span">{{ work.company }}</span>  Letter Of Recommendation</a>
-                        </div>
-                        <div class="col-md-6 eng-col-website">
-                            <a href="http://{{ work.website }}" target="_blank" class="eng-company-website">{{ work.website }}</a>
-                        </div>
-                        {% else %}
-                        <div class="col eng-col-website">
-                            <a href="http://{{ work.website }}" target="_blank" class="eng-company-website">{{ work.website }}</a>
-                        </div>
-                        {% endif %}
-                    </div>
-                </div>
-                <div class="col-xl-4 text-center">
-                    <img class="eng-company-map" src="{{ work.image.url }}" alt="">
-                </div>
-            </div>
-        </div>        
-    </div>
-    {% endfor %}
-</div>
-
-<div class="container-fluid mt-5 pt-3" id="work">
-    <div class="row mb-4">
-        <div class="col">
-            <h2 class="hp-3-h2" >Personal Projects</h2>
-            <p class="hp-3-p">Everything I worked for.</p>
-        </div>
-    </div>
-    
-    <div class="row">
-        {% for project in projects %}
-        <div class="col-md-6 mb-5 mt-2">
-            <div class="webapp-col webapp-a mx-auto">
-                <img class="webapp-img" style="width: 100%;height: auto;" src="{{ project.image.url }}" alt="">
-                <div style="width: 50%;">
-                    <h2 class="project-title" >{{ project.title }}</h2>
-                    <p class="webapp-description">{{ project.description|linebreaksbr }}</p>
-                    <div class="webapp-rectangle"></div>
-                    {% if project.mobile_content %}
-                    <p class="project-content">{{ project.content|linebreaksbr }}</p> 
-                    <p class="project-content-mobile">{{ project.mobile_content|linebreaksbr }}</p> 
-                    {% else %}
-                    <p class="project-content no-mobile-content">{{ project.content|linebreaksbr }}</p> 
-                    {% endif %}
-                </div>  
-                {% if project.url %}
-                <a href="{{ project.url }}" target="_blank" class="projects-more-button">{{ project.click_text }}</a>
-                {% else %}
-                <a href="{{ project.get_absolute_url }}" class="projects-more-button">{{ project.click_text }}</a>
-                {% endif %} 
-            </div>   
-        </div>
-        {% endfor %}
-    </div>
-</div>
-
-
-
-
-
-
-
-
-
-
-
 {% endblock content %}
+
+
 
 {% block extra_scripts %}
 {% endblock extra_scripts %}
