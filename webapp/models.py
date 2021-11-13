@@ -9,6 +9,8 @@ class MyUser(AbstractUser):
 class XML(models.Model):
     user = models.ForeignKey( MyUser, on_delete=models.CASCADE )
     xml_link = models.CharField(max_length=250)
+    xml_file = models.FileField(upload_to='', max_length=500, blank=True)
+    word = models.CharField(max_length=100)
 
     def __str__(self):
-        return self.name
+        return self.xml_link
